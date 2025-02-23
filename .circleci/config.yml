@@ -16,8 +16,9 @@ jobs:
       - run:
           name: Build Docker Images
           command: |
-            docker build -f Dockerfile.initcontainer -t $DOCKERHUB_USERNAME/alpine-init-container:latest .
-            docker build -f Dockerfile.maincontainer -t $DOCKERHUB_USERNAME/alpine-main-container:latest .
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -f Dockerfile.initcontainer -t $DOCKERHUB_USERNAME/alpine-init-container:$TAG .
+            docker build -f Dockerfile.maincontainer -t $DOCKERHUB_USERNAME/alpine-main-container:$TAG .
 
       - run:
           name: Push Docker Images
