@@ -14,5 +14,5 @@ WORKDIR /app
 
 RUN chmod +x /app/main-entrypoint.sh
 
-USER abcd
+#USER abcd
 ENTRYPOINT ["/app/main-entrypoint.sh"]
