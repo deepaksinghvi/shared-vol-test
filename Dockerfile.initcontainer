@@ -3,7 +3,7 @@ FROM alpine:latest
 
 # Install required packages
 RUN apk add --no-cache shadow bash
-
+USER root
 RUN addgroup -g 7447 abcd && \
     adduser -D -u 7447 -G abcd -s /bin/sh abcd
 
