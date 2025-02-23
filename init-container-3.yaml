@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      # Set fsGroup to ensure shared volume permissions
+      securityContext:
+        fsGroup: 7477  # Change as needed
+        runAsNonRoot: true
+        runAsUser: 7447
+        fsGroup: 7447
+
+      # Shared volume between init and main containers
+      volumes:
+        - name: shared-volume
+          emptyDir: {}
+
+      initContainers:
+        - name: init-container
+          image: docker.io/deepaksinghvi/alpine-init-container:latest
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /home/abcd/myfolder
+      containers:
+        - name: main-container
+          image: docker.io/deepaksinghvi/alpine-main-container:latest
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /home/abcd/myfolder
