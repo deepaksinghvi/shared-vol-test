@@ -1,0 +1,32 @@
+# Use Alpine as the base image
+FROM alpine:latest
+
+# Install necessary packages
+RUN apk add --no-cache bash shadow
+
+# Set up user and group (simplified)
+RUN echo "Running as root during build" && \
+    addgroup -g 7447 abcd && \
+    adduser -u 7447 -G abcd -s /bin/sh -D abcd
+
+# Create directories and files
+RUN mkdir -pv /home/abcd/myfolder/mytestfolder && \
+    echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt && \
+    echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt && \
+    chown -R abcd:abcd /home/abcd
+
+# List directories for verification
+RUN echo "Listing /" && ls -l / && \
+    echo "Listing /home" && ls -l /home && \
+    echo "Listing /home/abcd" && ls -l /home/abcd && \
+    echo "Listing /home/abcd/myfolder" && ls -l /home/abcd/myfolder/ && \
+    echo "Listing /home/abcd/myfolder/mytestfolder" && ls -l /home/abcd/myfolder/mytestfolder
+
+# Set working directory
+WORKDIR /home/abcd
+
+# Switch to the new user
+USER abcd
+
+# Default command
+CMD ["/bin/sh"]
