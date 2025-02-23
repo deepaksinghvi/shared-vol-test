@@ -4,28 +4,14 @@ FROM alpine:latest
 # Install required packages
 RUN apk add --no-cache shadow bash
 
-# Create group and user
-RUN echo "Running as $(whoami)" || echo "User not found during build" && \
-    addgroup -g 7447 abcd && \
-    adduser -u 7447 -G abcd -s /bin/sh -D abcd
+RUN groupadd --system --gid 7447 abcd && adduser -rms /bin/bash --uid 7447 --gid 7447 abcd --create-home
 
-# Create directories and files
-RUN mkdir -pv /home/abcd/myfolder/mytestfolder && \
-    echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt && \
-    echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt && \
-    chown -R abcd:abcd /home/abcd/myfolder
+RUN mkdir /app
+ADD . /app
 
-# List contents
-RUN echo "Listing contents in /home/abcd/myfolder" && \
-    ls -l /home/abcd/myfolder/ && \
-    echo "Listing /home/abcd/myfolder/mytestfolder" && \
-    ls -l /home/abcd/myfolder/mytestfolder
+WORKDIR /app
 
-# Set working directory
-WORKDIR /home/abcd/myfolder
+RUN chmod +x /app/main-entrypoint.sh
 
-# Switch to the created user
 USER abcd
-
-# Keep the container running
-CMD ["sh", "-c", "echo 'Container is running...'; sleep 3600"]
+ENTRYPOINT ["/app/main-entrypoint.sh"]
