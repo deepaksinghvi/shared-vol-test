@@ -4,7 +4,7 @@ FROM alpine:latest
 # Install required packages
 RUN apk add --no-cache shadow bash
 
-RUN groupadd --system --gid 7447 abcd && adduser -rms /bin/bash --uid 7447 --gid 7447 abcd --create-home
+RUN addgroup --system --gid 7447 abcd && adduser -rms /bin/bash --uid 7447 --gid 7447 abcd --create-home
 
 RUN mkdir /app
 ADD . /app
