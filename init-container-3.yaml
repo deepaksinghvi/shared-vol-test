@@ -24,12 +24,16 @@ spec:
         - name: shared-volume
           emptyDir: {}
 
+
       initContainers:
         - name: init-container
           image: docker.io/deepaksinghvi/alpine-init-container:latest
           volumeMounts:
             - name: shared-volume
               mountPath: /home/abcd/myfolder
+          securityContext:
+            runAsUser: 0  # Run as root to avoid permission issues
+            runAsNonRoot: false        # Allow root user
       containers:
         - name: main-container
           image: docker.io/deepaksinghvi/alpine-main-container:latest
