@@ -9,6 +9,12 @@ docker build -f Dockerfile.initcontainer -t deepaksinghvi/alpine-init-container:
 docker build -f Dockerfile.maincontainer -t deepaksinghvi/alpine-main-container:latest .
 ```
 
+Start minikube
+
+```
+minikube start
+```
+
 To create the deployment
 ```
 kubectl apply -f ./shared-vol-test/init-container-3.yaml
