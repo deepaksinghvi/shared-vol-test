@@ -22,6 +22,6 @@ When a shared volume is mounted into a container, it overrides the existing cont
  • Files created by a script during runtime (after the volume is mounted) are visible.
  • Files that are part of the Docker image at the mount path are hidden because the volume mount masks them.
 
-On any change in this repo https://github.com/deepaksinghvi/shared-vol-test/actions are triggerring and pushing new image to
-https://hub.docker.com/repository/docker/deepaksinghvi/alpine-main-container/general
+On any change in this repo https://github.com/deepaksinghvi/shared-vol-test/actions are triggerring and pushing new image to \
+https://hub.docker.com/repository/docker/deepaksinghvi/alpine-main-container/general \
 https://hub.docker.com/repository/docker/deepaksinghvi/alpine-init-container/general
