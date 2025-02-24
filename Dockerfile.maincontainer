@@ -14,5 +14,7 @@ WORKDIR /app
 
 RUN chmod +x /app/main-entrypoint.sh
 
-#USER abcd
+USER abcd
+RUN mkdir -pv /home/abcd/myfolder
+RUN mkdir -pv /home/abcd/myfolder/test1FromMainContainer
 ENTRYPOINT ["/app/main-entrypoint.sh"]
