@@ -10,12 +10,12 @@ echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt
 echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt
 echo "file created /home/abcd/myfolder/mytestfolder/file1.txt"
 echo "file created /home/abcd/myfolder/mytestfolder/file2.txt"
-#chown -R abcd:abcd /home/abcd
+chown -R abcd:abcd /home/abcd
 echo "listing /home/abcd"
 ls -l /home/abcd
-#chown -R abcd:abcd /home/abcd/myfolder
+chown -R abcd:abcd /home/abcd/myfolder
 echo "listing /home/abcd/myfolder"
 ls -l /home/abcd/myfolder/
-#chown -R abcd:abcd /home/abcd/myfolder/mytestfolder
+chown -R abcd:abcd /home/abcd/myfolder/mytestfolder
 echo "listing /home/abcd/myfolder/mytestfolder"
 ls -l /home/abcd/myfolder/mytestfolder
