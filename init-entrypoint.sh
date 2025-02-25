@@ -9,10 +9,10 @@ echo "ls -l /home/abcd/myfolder..."
 ls -l /home/abcd/myfolder
 echo "Creating directory and copying files..."
 mkdir -pv /home/abcd/myfolder/mytestfolder
-echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt
-echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt
-echo "file created /home/abcd/myfolder/mytestfolder/file1.txt"
-echo "file created /home/abcd/myfolder/mytestfolder/file2.txt"
+#echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt
+#echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt
+#echo "file created /home/abcd/myfolder/mytestfolder/file1.txt"
+#echo "file created /home/abcd/myfolder/mytestfolder/file2.txt"
 chown -R abcd:abcd /home/abcd
 echo "listing /home/abcd"
 ls -l /home/abcd

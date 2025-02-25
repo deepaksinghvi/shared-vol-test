@@ -18,4 +18,4 @@ USER abcd
 RUN mkdir -pv /home/abcd/myfolder/mytestfolder
 RUN echo "Sample text file" > /home/abcd/myfolder/mytestfolder/file1.txt
 RUN echo "Another text file" > /home/abcd/myfolder/mytestfolder/file2.txt
-# ENTRYPOINT ["/app/init-entrypoint.sh"]
+ENTRYPOINT ["/app/init-entrypoint.sh"]
